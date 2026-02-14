@@ -1,13 +1,20 @@
-# 🌬️ IoT Air Quality Index (AQI) Station
+# IoT Radiation Monitor ☢️
 
-A real-time environmental monitoring system that tracks hazardous gases and calculates the local Air Quality Index (AQI) to provide health-based recommendations.
+A radiological safety node utilizing a Geiger-Müller tube to detect ionizing radiation and stream real-time dose-rate data via WiFi.
 
-## 🚀 Features
-- **Multi-Gas Detection:** Tracks CO2, Smoke, and Ammonia (NH3).
-- **AQI Calculation:** Converts raw sensor data into standardized AQI levels.
-- **Health Advisory:** Generates automatic warnings (e.g., "Wear a Mask") based on pollution levels.
-- **Remote Telemetry:** Real-time data streaming to a Python dashboard via WiFi.
+## Description
+A radiological safety node utilizing a Geiger-Müller tube to detect ionizing radiation and stream real-time dose-rate data via WiFi.
 
-## ⚙️ Engineering Logic
-- **Hardware:** ESP32 interprets analog signals from an MQ-135 sensor.
-- **Software:** Python applies a logarithmic curve to the sensor's voltage output to estimate gas concentration in PPM (Parts Per Million).
+## Key Features
+- **Real-Time CPM Tracking:** High-precision interrupt-driven counting of ionizing events.
+- **Dose Rate Calculation:** Converts raw Counts Per Minute (CPM) into Microsieverts per hour (uSv/h).
+- **Radiological Alerts:** Visual and audible alarms trigger when radiation exceeds the 0.50 uSv/h threshold.
+
+## Tech Stack
+- **Language:** Python, C++
+- **Libraries:** Streamlit, Plotly, Pandas, ESP8266WiFi
+- **Hardware:** Geiger-Müller Counter (J305), NodeMCU
+
+## Engineering Logic
+- **Hardware:** The NodeMCU uses a hardware interrupt to count voltage pulses from the Geiger tube's high-voltage circuit.
+- **Software:** Python calculates the statistical deviation of the background radiation to identify significant radiological spikes.
